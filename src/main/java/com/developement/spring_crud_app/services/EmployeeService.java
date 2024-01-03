@@ -39,15 +39,26 @@ public class EmployeeService {
         }
     }
 
-    public Employee updateEmployee(Employee employee){
-        Employee employeeObject = getEmployeeById(employee.getId());
+    public String deleteEmployeeByName(String name){
+        Employee deleteEmp = getEmployeeByName(name);
+        if(deleteEmp == null){
+            return "Employee name doesn't exists";
+        }else {
+            employeeRepository.deleteByName(name);
+            return "Employee Deleted Successfully";
+        }
+    }
+
+    public String updateEmployee(Employee employee){
+        Employee employeeObject = getEmployeeByName(employee.getName());
         if(employeeObject == null){
             addEmployee(employee);
+            return "Employee details added Successfully";
         }else{
             deleteEmployee(employee.getId());
             addEmployee(employee);
+            return "Employee details updated Successfully";
         }
-        return employee;
     }
 
 
