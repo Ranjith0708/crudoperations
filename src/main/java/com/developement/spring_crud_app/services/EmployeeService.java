@@ -1,12 +1,9 @@
 package com.developement.spring_crud_app.services;
 
 import com.developement.spring_crud_app.model.Employee;
-import com.developement.spring_crud_app.repoimpl.EmployeeRepositoryImpl;
 import com.developement.spring_crud_app.repository.EmployeeRepository;
-import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +12,7 @@ import java.util.List;
 public class EmployeeService {
     @Autowired
     EmployeeRepository employeeRepository;
-    @Autowired
-    EmployeeRepositoryImpl employeeRepositoryImpl;
+
 
     public String addEmployee(Employee employee){
          employeeRepository.save(employee);
