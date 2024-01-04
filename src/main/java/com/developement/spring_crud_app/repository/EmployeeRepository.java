@@ -12,10 +12,7 @@ import org.springframework.stereotype.Repository;
 public interface EmployeeRepository extends JpaRepository<Employee,Integer> {
 
 
-    @Transactional
-    @Modifying
-    @Query(value = "SELECT * FROM Employee WHERE name = :name", nativeQuery = true)
-    Employee findByName(@Param("name")String name);
+    Employee findByName(String name);
 
     Employee deleteByName(String name);
 }

@@ -15,7 +15,7 @@ public class EmployeeController {
     EmployeeService employeeService;
 
     @PostMapping("/addEmployee")
-    public Employee addEmployee(@RequestBody Employee employee){
+    public String addEmployee(@RequestBody Employee employee){
         return employeeService.addEmployee(employee);
     }
 
@@ -30,8 +30,12 @@ public class EmployeeController {
     }
 
     @GetMapping("/getEmployeeByName/{name}")
-    public Employee getEmployeeByName(@PathVariable String name){
+    public List<Employee> getEmployeeByName(@PathVariable String name){
         return employeeService.getEmployeeByName(name);
+    }
+    @GetMapping("getIds/{name}")
+    public List<Integer> getIds(@PathVariable String name){
+        return employeeService.getEmpIds(name);
     }
 
     @DeleteMapping("/deleteEmployeeById/{id}")
